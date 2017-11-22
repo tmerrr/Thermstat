@@ -5,7 +5,7 @@ function Thermostat() {
 }
 
 Thermostat.prototype.increaseTemp = function() {
-  if (this.isPowerSaving && this.temperature === 25) {
+  if (this.isPowerSaving && this.temperature >= 25) {
     throw 'Power saving is on, maximum temperature reached';
   } else if (this.isPowerSaving === false && this.temperature === 32) {
     throw 'Power saving is off, maximum temperature reached';
@@ -14,7 +14,7 @@ Thermostat.prototype.increaseTemp = function() {
 }
 
 Thermostat.prototype.decreaseTemp = function() {
-  if (this.temperature === 10) throw 'Minimum temperature reached';
+  if (this.temperature <= 10) throw 'Minimum temperature reached';
   this.temperature--
 }
 
@@ -29,5 +29,14 @@ Thermostat.prototype.energyUsage = function() {
     return 'medium-usage';
   } else {
     return 'high-usage';
+  }
+}
+
+Thermostat.prototype.switchPowerSaving = function() {
+  if (this.isPowerSaving) {
+    this.isPowerSaving = false;
+  } else {
+    if (this.temperature > 25) this.temperature = 25;
+    this.isPowerSaving = true;
   }
 }

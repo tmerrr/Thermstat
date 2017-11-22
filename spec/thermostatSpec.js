@@ -77,5 +77,15 @@ describe ('Thermostat', function() {
       expect(thermostat.energyUsage()).toEqual('high-usage');
     });
   });
-
+  describe('switchPowerSaving', function() {
+    it('Switch to false when true', function() {
+      thermostat.switchPowerSaving()
+      expect(thermostat.isPowerSaving).toBe(false);
+    });
+    it('Switch to true when false', function() {
+      thermostat.switchPowerSaving()
+      thermostat.switchPowerSaving()
+      expect(thermostat.isPowerSaving).toBe(true);
+    });
+  });
 });

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Thermostat</title>
+    <link rel="stylesheet" type="text/css" href="../public/stylesheet.css">
+    <script src="../src/thermostat.js" type="text/javascript"></script>
+  </head>
+  <body>
+
+    <script>
+    const thermostat = new Thermostat();
+    </script>
+
+    <script type="text/javascript">
+      const switchPs = function() {
+        thermostat.switchPowerSaving();
+        document.getElementById('powersaving').innerHTML = (thermostat.isPowerSaving ? 'On' : 'Off');
+        document.getElementById('current temperature').innerHTML = (thermostat.temperature);
+      }
+      const increase = function() {
+        thermostat.increaseTemp()
+        document.getElementById('current temperature').innerHTML = (thermostat.temperature)
+      }
+      const decrease = function() {
+        thermostat.decreaseTemp()
+        document.getElementById('current temperature').innerHTML = (thermostat.temperature)
+      }
+    </script>
+
+
+     <h1>Thermostat</h1>
+
+    <div class="thermostatBox">
+
+
+
+
+      <button class="powersaving" type="button" name="button" onclick="switchPs();"> Power Saving: <p id='powersaving'>On</p>   </button>
+
+      <div class="temperatureBox">
+      <h1 id='current temperature'></h1>
+      <script type="text/javascript">
+        document.getElementById('current temperature').innerHTML = (thermostat.temperature)
+      </script>
+      <input class="button" type="button" name="increase" value="+" onclick='increase();'>
+      <input class="button" type="button" name="decrease" value="-" onclick='decrease();'>
+      </div>
+
+
+
+
+    </div>
+  </body>
+</html>
