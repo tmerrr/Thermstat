@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <title>Thermostat</title>
     <link rel="stylesheet" type="text/css" href="../public/stylesheet.css">
-    <script src="../src/thermostat.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="../src/thermostat.js"></script>
   </head>
   <body>
 
@@ -15,16 +17,20 @@
     <script type="text/javascript">
       const switchPs = function() {
         thermostat.switchPowerSaving();
-        document.getElementById('powersaving').innerHTML = (thermostat.isPowerSaving ? 'On' : 'Off');
-        document.getElementById('current temperature').innerHTML = (thermostat.temperature);
+        $('#powersaving').html(thermostat.isPowerSaving ? 'On' : 'Off');
+        $('#currentTemperature').html(thermostat.temperature);
+        // document.getElementById('powersaving').innerHTML = (thermostat.isPowerSaving ? 'On' : 'Off');
+        // document.getElementById('currentTemperature').innerHTML = (thermostat.temperature);
       }
       const increase = function() {
-        thermostat.increaseTemp()
-        document.getElementById('current temperature').innerHTML = (thermostat.temperature)
+        thermostat.increaseTemp();
+        $('#currentTemperature').html(thermostat.temperature);
+        // document.getElementById('currentTemperature').innerHTML = (thermostat.temperature)
       }
       const decrease = function() {
         thermostat.decreaseTemp()
-        document.getElementById('current temperature').innerHTML = (thermostat.temperature)
+        $('#currentTemperature').html(thermostat.temperature);
+        // document.getElementById('currentTemperature').innerHTML = (thermostat.temperature)
       }
     </script>
 
@@ -33,22 +39,16 @@
 
     <div class="thermostatBox">
 
-
-
-
       <button class="powersaving" type="button" name="button" onclick="switchPs();"> Power Saving: <p id='powersaving'>On</p>   </button>
 
       <div class="temperatureBox">
-      <h1 id='current temperature'></h1>
+      <h1 id='currentTemperature'></h1>
       <script type="text/javascript">
-        document.getElementById('current temperature').innerHTML = (thermostat.temperature)
+        $('#currentTemperature').html(thermostat.temperature);
       </script>
       <input class="button" type="button" name="increase" value="+" onclick='increase();'>
       <input class="button" type="button" name="decrease" value="-" onclick='decrease();'>
       </div>
-
-
-
 
     </div>
   </body>
