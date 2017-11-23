@@ -7,39 +7,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script src="../src/thermostat.js"></script>
-    <script type="text/javascript">
-      const thermostat = new Thermostat();
+    <script src="jquery.js"></script>
 
-      const updateTemperature = function() {
-        $('#currentTemperature').html(thermostat.temperature);
-      }
-
-      const switchPs = function() {
-        thermostat.switchPowerSaving();
-        $('#powersaving').html(thermostat.isPowerSaving ? 'On' : 'Off');
-        updateTemperature();
-        // document.getElementById('powersaving').innerHTML = (thermostat.isPowerSaving ? 'On' : 'Off');
-        // document.getElementById('currentTemperature').innerHTML = (thermostat.temperature);
-      }
-
-      const increase = function() {
-        thermostat.increaseTemp();
-        updateTemperature();
-      }
-
-      const decrease = function() {
-        thermostat.decreaseTemp()
-        updateTemperature();
-      }
-    </script>
   </head>
   <body onload="updateTemperature();">
 
      <h1>Thermostat</h1>
 
     <div class="thermostatBox">
-      <button class="powersaving" type="button" name="button" onclick="switchPs();">
-        Power Saving: <p id='powersaving'>On</p>
+      <button class="powerSaving" type="button" name="button" onclick="switchPs();">
+        Power Saving: <p id='powerSaving'>On</p>
       </button>
 
       <div class="temperatureBox">
