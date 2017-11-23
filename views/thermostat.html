@@ -15,7 +15,7 @@
 
     <div id='Box' class="thermostatBox">
       <button class="powerSaving" id="switchPowerSaving" type="button" name="button">
-        Power Saving: <p id='powerSaving'>On</p>
+        Power Saving: <p id='powerSaving'>Off</p>
       </button>
 
       <div class="temperatureBox">
@@ -23,7 +23,14 @@
         <input type="button" class="button" id="increaseTemp" name="increase" value="+">
         <input type="button" class="button" id="decreaseTemp" name="decrease" value="-">
       </div>
+
       <input type="button" class="button" id="Reset" value="Reset">
+
+      <h4> Weather: </h4>
+      <p id="weather"></p>
+      <h4> Outside Temperature: </h4>
+      <p id="outsideTemp"></p>
+
     </div>
   </body>
   <script src="jquery.js"></script>

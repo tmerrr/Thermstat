@@ -36,11 +36,15 @@ $('#switchPowerSaving').click(function(){
   updateTemperature();
 });
 
-$(document).ready(function(){
-  updateTemperature();
-})
-
 $('#Reset').click(function(){
   thermostat.reset();
   updateTemperature();
+});
+
+$(document).ready(function(){
+  updateTemperature();
+  $.get("http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=be55924011f9ecb6fd2e037de76a225e", function(weatherResponse) {
+    $('#outsideTemp').html(weatherResponse.main.temp);
+    $('#weather').html(weatherResponse.weather[0].description);
+  });
 });
