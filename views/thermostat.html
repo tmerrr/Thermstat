@@ -9,23 +9,21 @@
     <script src="../src/thermostat.js"></script>
 
   </head>
-  <body onload="updateTemperature();">
+  <body>
 
-     <h1>Thermostat</h1>
+    <h1>Thermostat</h1>
 
-    <div class="thermostatBox">
-      <button class="powerSaving" type="button" name="button" onclick="switchPs();">
+    <div id='Box' class="thermostatBox">
+      <button class="powerSaving" id="switchPowerSaving" type="button" name="button">
         Power Saving: <p id='powerSaving'>On</p>
       </button>
 
       <div class="temperatureBox">
         <h1 id='currentTemperature'></h1>
-        <div>
-          <input type="button" class="button" id="increaseTemp" name="increase" value="+">
-        </div>
-        <input type="button" class="button" name="decrease" value="-" onclick='decrease();'>
+        <input type="button" class="button" id="increaseTemp" name="increase" value="+">
+        <input type="button" class="button" id="decreaseTemp" name="decrease" value="-">
       </div>
-
+      <input type="button" class="button" id="Reset" value="Reset">
     </div>
   </body>
   <script src="jquery.js"></script>
