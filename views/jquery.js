@@ -1,4 +1,3 @@
-// <script type="text/javascript">
 const thermostat = new Thermostat();
 
 const updateTemperature = function() {
@@ -13,13 +12,17 @@ const switchPs = function() {
   // document.getElementById('powerSaving').innerHTML = (thermostat.isPowerSaving ? 'On' : 'Off');
 }
 
-const increase = function() {
-  thermostat.increaseTemp();
-  updateTemperature();
-}
-
 const decrease = function() {
   thermostat.decreaseTemp()
   updateTemperature();
 }
-// </script>
+
+// $(document).click(function() {
+//   thermostat.increaseTemp();
+//   updateTemperature();
+// });
+
+$('#increaseTemp').click(function() {
+  thermostat.increaseTemp();
+  updateTemperature();
+});
