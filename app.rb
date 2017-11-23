@@ -1,11 +1,14 @@
 require 'sinatra/base'
+require './models/thermostat'
 
-class Thermostat < Sinatra::Base
+class ThermostatController < Sinatra::Base
 
   post '/thermostat' do
     p params
-    @temperature = params[:temperature]
-    erb(:thermostat)
+    temperature = params[:temperature]
+    power_mode = params[:power_mode]
+    city = params[:city]
+    ThermostatModel.create(temperature: temperature, power_mode: power_mode, city: city)
   end
 
   run if app_file == $0

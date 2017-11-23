@@ -1,7 +1,7 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
 
-class Thermostat
+class ThermostatModel
   include DataMapper::Resource
 
   property :id,          Serial

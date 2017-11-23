@@ -6,22 +6,30 @@ const updateTemperature = function() {
   // document.getElementById('currentTemperature').innerHTML = (thermostat.temperature);
 }
 
-  $('#save').click(function(){
-    $.post('http://localhost:9292/thermostat', { temperature: thermostat.temperature });
+  $('#save').click(function() {
+    var city = $('#cities option:selected').text();
+    $.post('http://localhost:9292/thermostat', {
+      temperature: thermostat.temperature,
+      power_mode: thermostat.isPowerSaving,
+      city: city
+    });
   });
 
-const updateColor = function(){
+const decideColour = function() {
   switch (thermostat.energyUsage()) {
     case 'low-usage':
-      color = 'green';
-      break;
+    return 'green';
+    break;
     case 'medium-usage':
-      color = 'yellow';
-      break;
+    return 'yellow';
+    break;
     case 'high-usage':
-      color = 'red';
+    return 'red';
   };
-  $('#Box').css('background-color', color);
+}
+
+const updateColor = function() {
+  $('#Box').css('background-color', decideColour);
 }
 
 $('#increaseTemp').click(function() {
@@ -29,23 +37,23 @@ $('#increaseTemp').click(function() {
   updateTemperature();
 });
 
-$('#decreaseTemp').click(function(){
+$('#decreaseTemp').click(function() {
   thermostat.decreaseTemp()
   updateTemperature();
 });
 
-$('#switchPowerSaving').click(function(){
+$('#switchPowerSaving').click(function() {
   thermostat.switchPowerSaving();
   $('#powerSaving').html(thermostat.isPowerSaving ? 'Off' : 'On');
   updateTemperature();
 });
 
-$('#Reset').click(function(){
+$('#Reset').click(function() {
   thermostat.reset();
   updateTemperature();
 });
 
-$('#confirmCity').click(function(){
+$('#confirmCity').click(function() {
   var city = $('#cities option:selected').text();
   $.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=be55924011f9ecb6fd2e037de76a225e`, function(weatherResponse) {
     $('#outsideTemp').html(weatherResponse.main.temp);
@@ -53,6 +61,6 @@ $('#confirmCity').click(function(){
   });
 });
 
-$(document).ready(function(){
+$(document).ready(function() {
   updateTemperature();
 });
