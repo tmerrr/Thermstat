@@ -6,6 +6,10 @@ const updateTemperature = function() {
   // document.getElementById('currentTemperature').innerHTML = (thermostat.temperature);
 }
 
+  $('#save').click(function(){
+    $.post('http://localhost:9292/thermostat', { temperature: thermostat.temperature });
+  });
+
 const updateColor = function(){
   switch (thermostat.energyUsage()) {
     case 'low-usage':
