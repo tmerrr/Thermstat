@@ -1,19 +1,23 @@
 require 'sinatra/base'
+require 'sinatra/cross_origin'
 require './models/thermostat'
 
 class ThermostatController < Sinatra::Base
+  register Sinatra::CrossOrigin
 
-  post '/thermostat' do
-    p params
+  get '/get_data' do
+    cross_origin
+    @data = ThermostatModel.get(1)
+    erb :thermostatData
+  end
+
+  post '/save_data' do
+    cross_origin
     temperature = params[:temperature]
     power_mode = params[:power_mode]
     city = params[:city]
-    if ThermostatModel.all.empty?
-      ThermostatModel.create(temperature: temperature, power_mode: power_mode, city: city)
-    else
-      last_data = ThermostatModel.all.last
-      last_data.update(temperature: temperature, power_mode: power_mode, city: city)
-    end
+    ThermostatModel.destroy!
+    ThermostatModel.create(id: 1, temperature: temperature, power_mode: power_mode, city: city)
   end
 
   run if app_file == $0

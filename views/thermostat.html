@@ -13,35 +13,56 @@
 
     <h1>Thermostat</h1>
 
-    <div id='Box' class="thermostatBox">
-      <button class="powerSaving" id="switchPowerSaving" type="button" name="button">
-        Power Saving: <p id='powerSaving'>Off</p>
-      </button>
+    <div id='Box' class="mainBox">
 
       <div class="temperatureBox">
-        <h1 id='currentTemperature'></h1>
-        <input type="button" class="button" id="increaseTemp" name="increase" value="+">
-        <input type="button" class="button" id="decreaseTemp" name="decrease" value="-">
+        <input type="button" class="decreaseTempButton" id="decreaseTemp" name="decrease" value="-">
+        <text class="temperatureText" id='currentTemperature'></text>
+        <input type="button" class="increaseTempButton" id="increaseTemp" name="increase" value="+">
       </div>
 
-      <input type="button" class="button" id="Reset" value="Reset">
+      <div class="resetAndPowerSavingBox">
+        <button class="powerSavingButton" id="switchPowerSaving" type="button" name="button">
+          Power Saving: <text id='powerSaving'>Off</text>
+        </button>
+        <input type="button" class="resetButton" id="Reset" value="Reset">
+      </div>
 
-      <select name="cities" id='cities'>
-        <option value="London">London</option>
-        <option value="Paris">Paris</option>
-        <option value="Rome">Rome</option>
-        <option value="Buenos Aires">Buenos Aires</option>
-      </select>
-      <input type="button" class="button" id="confirmCity" value="Confirm">
+      <div class="weatherBox">
 
-      <h4> Weather: </h4>
-      <p id="weather"></p>
-      <h4> Outside Temperature: </h4>
-      <p id="outsideTemp"></p>
+        <div class="weatherSelection">
+          <select name="cities" id='cities'>
+            <option value="London">London</option>
+            <option value="Paris">Paris</option>
+            <option value="Rome">Rome</option>
+            <option value="Buenos Aires">Buenos Aires</option>
+          </select>
+          <input type="button" class="button" id="confirmCity" value="Confirm">
 
-      <input type="button" class="button" id="save" value="Save">
+        </div>
+
+        <div>
+
+          <div class="weatherSetText">
+            <br>
+            <text class="weatherText"> Weather: </text>
+            <br>
+            <text class="outsideTempText"> Outside Temperature: </text>
+
+          </div>
+
+          <div class="weatherOutput">
+            <br>
+            <text id="weather"></text>
+            <br>
+            <text id="outsideTemp"></text>
+          </div>
+
+        </div>
+      </div>
 
     </div>
+
   </body>
   <script src="jquery.js"></script>
 </html>
